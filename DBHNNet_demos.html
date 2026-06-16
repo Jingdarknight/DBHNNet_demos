@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>语音增强效果演示 Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", Arial, sans-serif;
+        }
+        body {
+            padding: 30px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 35px;
+            color: #222;
+        }
+        h2 {
+            font-size: 19px;
+            margin: 45px 0 20px;
+            color: #333;
+        }
+        h3 {
+            font-size: 17px;
+            margin: 22px 0 12px;
+            color: #444;
+        }
+        .row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 28px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+        .item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 185px;
+        }
+        .spec-title {
+            font-size: 16px;
+            color: #ff3333;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        .spec-wrap {
+            width: 175px;
+            height: 105px;
+            border: 1px solid #ccc;
+            background: #000;
+            margin-bottom: 10px;
+        }
+        .spec-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        audio {
+            width: 175px;
+        }
+        .label {
+            min-width: 105px;
+            text-align: right;
+            padding-right: 12px;
+            font-weight: 500;
+            font-size: 15px;
+        }
+        .divider {
+            border-bottom: 1px solid #999;
+            margin: 40px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>语音增强效果演示 Demo</h1>
+
+    <!-- ========== WSJ0 测试集 ========== -->
+    <h3>WSJ0测试集</h3>
+    <div class="row">
+        <div class="label">语谱</div>
+        <div class="item">
+            <div class="spec-title">noisy</div>
+            <div class="spec-wrap"><img class="spec-img" src="img/s1_01.png" alt="语谱图"></div>
+            <audio controls src="audio/s1_01.wav">
+        </div>
+        <div class="item">
+            <div class="spec-title">DCCRN</div>
+            <div class="spec-wrap"><img class="spec-img" src="img/s1_02.png" alt="语谱图"></div>
+            <audio controls src="audio/s1_02.wav">
+        </div>
+        <div class="item">
+            <div class="spec-title">FullSubNet</div>
+            <div class="spec-wrap"><img class="spec-img" src="img/s1_03.png" alt="语谱图"></div>
+            <audio controls src="audio/s1_03.wav">
+        </div>
+        <div class="item">
+            <div class="spec-title">BSDB-Net</div>
+            <div class="spec-wrap"><img class="spec-img" src="img/s1_04.png" alt="语谱图"></div>
+            <audio controls src="audio/s1_04.wav">
+        </div>
+        <div class="item">
+            <div class="spec-title">DBHN-Net</div>
+            <div class="spec-wrap"><img class="spec-img" src="img/s1_05.png" alt="语谱图"></div>
+            <audio controls src="audio/s1_05.wav">
+        </div>
+    </div>
+
+    <!-- ========== DNS1 测试集 ========== -->
+    <h3>DNS1测试集</h3>
+    <div class="row">
+        <div class="label">语谱</div>
+        <div class="item">
+            <div class="spec-title">noisy</div>
+            <div class="spec-wrap"><img class="spec-img" src="img/s2_01.png" alt="语谱图"></div>
+            <audio controls src="audio/s2_01.wav">
+        </div>
+        <div class="item">
+            <div class="spec-title">DCCRN</div>
+            <div class="spec-wrap"><img class="spec-img" src="img/s2_02.png" alt="语谱图"></div>
+            <audio controls src="audio/s2_02.wav">
+        </div>
+        <div class="item">
+            <div class="spec-title">FullSubNet</div>
+            <div class="spec-wrap"><img class="spec-img" src="img/s2_03.png" alt="语谱图"></div>
+            <audio controls src="audio/s2_03.wav">
+        </div>
+        <div class="item">
+            <div class="spec-title">BSDB-Net</div>
+            <div class="spec-wrap"><img class="spec-img" src="img/s2_04.png" alt="语谱图"></div>
+            <audio controls src="audio/s2_04.wav">
+        </div>
+        <div class="item">
+            <div class="spec-title">DBHN-Net</div>
+            <div class="spec-wrap"><img class="spec-img" src="img/s2_05.png" alt="语谱图"></div>
+            <audio controls src="audio/s2_05.wav">
+        </div>
+    </div>
+
+    <!-- ========== VoiceBank 测试集 ========== -->
+    <h3>VoiceBank测试集</h3>
+    <div class="row">
+        <div class="label">语谱</div>
+        <div class="item">
+            <div class="spec-title">noisy</div>
+            <div class="spec-wrap"><img class="spec-img" src="img/s3_01.png" alt="语谱图"></div>
+            <audio controls src="audio/s3_01.wav">
+        </div>
+        <div class="item">
+            <div class="spec-title">DCCRN</div>
+            <div class="spec-wrap"><img class="spec-img" src="img/s3_02.png" alt="语谱图"></div>
+            <audio controls src="audio/s3_02.wav">
+        </div>
+        <div class="item">
+            <div class="spec-title">FullSubNet</div>
+            <div class="spec-wrap"><img class="spec-img" src="img/s3_03.png" alt="语谱图"></div>
+            <audio controls src="audio/s3_03.wav">
+        </div>
+        <div class="item">
+            <div class="spec-title">BSDB-Net</div>
+            <div class="spec-wrap"><img class="spec-img" src="img/s3_04.png" alt="语谱图"></div>
+            <audio controls src="audio/s3_04.wav">
+        </div>
+        <div class="item">
+            <div class="spec-title">DBHN-Net</div>
+            <div class="spec-wrap"><img class="spec-img" src="img/s3_05.png" alt="语谱图"></div>
+            <audio controls src="audio/s3_05.wav">
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ========== 22组噪声场景 ========== -->
+    <h2>常见噪声场景去噪性能 Demo 展示</h2>
+    <div id="sceneContainer"></div>
+
+    <script>
+        // 1/22组场景（每组也加上标题，方便区分）
+        const container = document.getElementById('sceneContainer');
+        let sceneHtml = '';
+        sceneHtml += `
+        <div class="row">
+            <div class="label">#餐厅场景1-----------------------#</div>
+            <div class="item">
+                <div class="spec-title">带噪语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo1_0.png" alt="语谱图"></div>
+                <audio controls src="audio/demo1_0.wav">
+            </div>
+            <div class="item">
+                <div class="spec-title">增强语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo1_1.png" alt="语谱图"></div>
+                <audio controls src="audio/demo1_1.wav">
+            </div>
+        </div>
+        `;
+        	
+         // 2/22组场景（每组也加上标题，方便区分）
+        sceneHtml += `
+        <div class="row">
+            <div class="label">#餐厅场景2 & 强背景人声---------#</div>
+            <div class="item">
+                <div class="spec-title">带噪语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo2_0.png" alt="语谱图"></div>
+                <audio controls src="audio/demo2_0.wav">
+            </div>
+            <div class="item">
+                <div class="spec-title">增强语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo2_1.png" alt="语谱图"></div>
+                <audio controls src="audio/demo2_1.wav">
+            </div>
+        </div>
+        `;
+        
+        // 3/22组场景（每组也加上标题，方便区分）
+        sceneHtml += `
+        <div class="row">
+            <div class="label">#办公场景1(多人说话)-------------#</div>
+            <div class="item">
+                <div class="spec-title">带噪语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo3_0.png" alt="语谱图"></div>
+                <audio controls src="audio/demo3_0.wav">
+            </div>
+            <div class="item">
+                <div class="spec-title">增强语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo3_1.png" alt="语谱图"></div>
+                <audio controls src="audio/demo3_1.wav">
+            </div>
+        </div>
+        `;
+        
+       // 4/22组场景（每组也加上标题，方便区分）
+        sceneHtml += `
+        <div class="row">
+            <div class="label">#办公场景2(键盘声)---------------#</div>
+            <div class="item">
+                <div class="spec-title">带噪语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo4_0.png" alt="语谱图"></div>
+                <audio controls src="audio/demo4_0.wav">
+            </div>
+            <div class="item">
+                <div class="spec-title">增强语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo4_1.png" alt="语谱图"></div>
+                <audio controls src="audio/demo4_1.wav">
+            </div>
+        </div>
+        `;
+        
+        // 5/22组场景（每组也加上标题，方便区分）
+        sceneHtml += `
+        <div class="row">
+            <div class="label">#办公场景3(鼠标声)---------------#</div>
+            <div class="item">
+                <div class="spec-title">带噪语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo5_0.png" alt="语谱图"></div>
+                <audio controls src="audio/demo5_0.wav">
+            </div>
+            <div class="item">
+                <div class="spec-title">增强语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo5_1.png" alt="语谱图"></div>
+                <audio controls src="audio/demo5_1.wav">
+            </div>
+        </div>
+        `;
+
+        // 6/22组场景（每组也加上标题，方便区分）
+        sceneHtml += `
+        <div class="row">
+            <div class="label">#地铁场景1(地铁运行中)-----------#</div>
+            <div class="item">
+                <div class="spec-title">带噪语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo6_0.png" alt="语谱图"></div>
+                <audio controls src="audio/demo6_0.wav">
+            </div>
+            <div class="item">
+                <div class="spec-title">增强语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo6_1.png" alt="语谱图"></div>
+                <audio controls src="audio/demo6_1.wav">
+            </div>
+        </div>
+        `;
+        
+        // 7/22组场景（每组也加上标题，方便区分）
+        sceneHtml += `
+        <div class="row">
+            <div class="label">#地铁场景2(地铁进站)-------------#</div>
+            <div class="item">
+                <div class="spec-title">带噪语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo6_2.png" alt="语谱图"></div>
+                <audio controls src="audio/demo6_2.wav">
+            </div>
+            <div class="item">
+                <div class="spec-title">增强语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo6_3.png" alt="语谱图"></div>
+                <audio controls src="audio/demo6_3.wav">
+            </div>
+        </div>
+        `;
+        
+       // 8/22组场景（每组也加上标题，方便区分）
+        sceneHtml += `
+        <div class="row">
+            <div class="label">#巴士场景1(市内公交车内)---------#</div>
+            <div class="item">
+                <div class="spec-title">带噪语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo7_0.png" alt="语谱图"></div>
+                <audio controls src="audio/demo7_0.wav">
+            </div>
+            <div class="item">
+                <div class="spec-title">增强语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo7_1.png" alt="语谱图"></div>
+                <audio controls src="audio/demo7_1.wav">
+            </div>
+        </div>
+        `;
+        
+        // 9/22组场景（每组也加上标题，方便区分）
+        sceneHtml += `
+        <div class="row">
+            <div class="label">#巴士场景2(长途大巴车内)--------#</div>
+            <div class="item">
+                <div class="spec-title">带噪语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo7_2.png" alt="语谱图"></div>
+                <audio controls src="audio/demo7_2.wav">
+            </div>
+            <div class="item">
+                <div class="spec-title">增强语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo7_3.png" alt="语谱图"></div>
+                <audio controls src="audio/demo7_3.wav">
+            </div>
+        </div>
+        `;
+        
+         // 10/22组场景（每组也加上标题，方便区分）
+        sceneHtml += `
+        <div class="row">
+            <div class="label">#街道场景1(常规街道&风噪)------#</div>
+            <div class="item">
+                <div class="spec-title">带噪语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo8_0.png" alt="语谱图"></div>
+                <audio controls src="audio/demo8_0.wav">
+            </div>
+            <div class="item">
+                <div class="spec-title">增强语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo8_1.png" alt="语谱图"></div>
+                <audio controls src="audio/demo8_1.wav">
+            </div>
+        </div>
+        `;
+        
+        // 11/22组场景（每组也加上标题，方便区分）
+        sceneHtml += `
+        <div class="row">
+            <div class="label">#街道场景2(吵闹街道&鸣笛)------#</div>
+            <div class="item">
+                <div class="spec-title">带噪语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo8_2.png" alt="语谱图"></div>
+                <audio controls src="audio/demo8_2.wav">
+            </div>
+            <div class="item">
+                <div class="spec-title">增强语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo8_3.png" alt="语谱图"></div>
+                <audio controls src="audio/demo8_3.wav">
+            </div>
+        </div>
+        `;
+        
+       // 12/22组场景（每组也加上标题，方便区分）
+        sceneHtml += `
+        <div class="row">
+            <div class="label">#街道场景3(吵闹街道&带口罩)----#</div>
+            <div class="item">
+                <div class="spec-title">带噪语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo8_4.png" alt="语谱图"></div>
+                <audio controls src="audio/demo8_4.wav">
+            </div>
+            <div class="item">
+                <div class="spec-title">增强语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo8_5.png" alt="语谱图"></div>
+                <audio controls src="audio/demo8_5.wav">
+            </div>
+        </div>
+        `;
+        
+        // 13/22组场景（每组也加上标题，方便区分）
+        sceneHtml += `
+        <div class="row">
+            <div class="label">#街道场景4(吵闹街道&背景音乐)--#</div>
+            <div class="item">
+                <div class="spec-title">带噪语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo8_6.png" alt="语谱图"></div>
+                <audio controls src="audio/demo8_6.wav">
+            </div>
+            <div class="item">
+                <div class="spec-title">增强语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo8_7.png" alt="语谱图"></div>
+                <audio controls src="audio/demo8_7.wav">
+            </div>
+        </div>
+        `;
+
+        // 14/22组场景（每组也加上标题，方便区分）
+        sceneHtml += `
+        <div class="row">
+            <div class="label">#街道场景5(街道桥底)-------------#</div>
+            <div class="item">
+                <div class="spec-title">带噪语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo8_8.png" alt="语谱图"></div>
+                <audio controls src="audio/demo8_8.wav">
+            </div>
+            <div class="item">
+                <div class="spec-title">增强语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo8_9.png" alt="语谱图"></div>
+                <audio controls src="audio/demo8_9.wav">
+            </div>
+        </div>
+        `;
+        
+        // 15/22组场景（每组也加上标题，方便区分）
+        sceneHtml += `
+        <div class="row">
+            <div class="label">#厨房场景1(盘子碰撞声)-----------#</div>
+            <div class="item">
+                <div class="spec-title">带噪语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo9_0.png" alt="语谱图"></div>
+                <audio controls src="audio/demo9_0.wav">
+            </div>
+            <div class="item">
+                <div class="spec-title">增强语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo9_1.png" alt="语谱图"></div>
+                <audio controls src="audio/demo9_1.wav">
+            </div>
+        </div>
+        `;
+        
+        // 16/22组场景（每组也加上标题，方便区分）
+        sceneHtml += `
+        <div class="row">
+            <div class="label">#厨房场景2(油烟机)---------------#</div>
+            <div class="item">
+                <div class="spec-title">带噪语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo10_0.png" alt="语谱图"></div>
+                <audio controls src="audio/demo10_0.wav">
+            </div>
+            <div class="item">
+                <div class="spec-title">增强语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo10_1.png" alt="语谱图"></div>
+                <audio controls src="audio/demo10_1.wav">
+            </div>
+        </div>
+        `;
+        
+        // 17/22组场景（每组也加上标题，方便区分）
+        sceneHtml += `
+        <div class="row">
+            <div class="label">#厨房场景3(水龙头)---------------#</div>
+            <div class="item">
+                <div class="spec-title">带噪语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo11_0.png" alt="语谱图"></div>
+                <audio controls src="audio/demo11_0.wav">
+            </div>
+            <div class="item">
+                <div class="spec-title">增强语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo11_1.png" alt="语谱图"></div>
+                <audio controls src="audio/demo11_1.wav">
+            </div>
+        </div>
+        `;
+        
+         // 18/22组场景（每组也加上标题，方便区分）
+        sceneHtml += `
+        <div class="row">
+            <div class="label">#家庭场景1(背景音乐)-------------#</div>
+            <div class="item">
+                <div class="spec-title">带噪语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo12_0.png" alt="语谱图"></div>
+                <audio controls src="audio/demo12_0.wav">
+            </div>
+            <div class="item">
+                <div class="spec-title">增强语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo12_1.png" alt="语谱图"></div>
+                <audio controls src="audio/demo12_1.wav">
+            </div>
+        </div>
+        `;
+        
+        // 19/22组场景（每组也加上标题，方便区分）
+        sceneHtml += `
+        <div class="row">
+            <div class="label">#家庭场景2(吹风机)---------------#</div>
+            <div class="item">
+                <div class="spec-title">带噪语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo13_0.png" alt="语谱图"></div>
+                <audio controls src="audio/demo13_0.wav">
+            </div>
+            <div class="item">
+                <div class="spec-title">增强语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo13_1.png" alt="语谱图"></div>
+                <audio controls src="audio/demo13_1.wav">
+            </div>
+        </div>
+        `;
+        
+       // 20/22组场景（每组也加上标题，方便区分）
+        sceneHtml += `
+        <div class="row">
+            <div class="label">#家庭场景3(楼梯间)---------------#</div>
+            <div class="item">
+                <div class="spec-title">带噪语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo14_0.png" alt="语谱图"></div>
+                <audio controls src="audio/demo14_0.wav">
+            </div>
+            <div class="item">
+                <div class="spec-title">增强语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo14_1.png" alt="语谱图"></div>
+                <audio controls src="audio/demo14_1.wav">
+            </div>
+        </div>
+        `;
+        
+        // 21/22组场景（每组也加上标题，方便区分）
+        sceneHtml += `
+        <div class="row">
+            <div class="label">#家庭场景4(户外狗叫声)-----------#</div>
+            <div class="item">
+                <div class="spec-title">带噪语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo15_0.png" alt="语谱图"></div>
+                <audio controls src="audio/demo15_0.wav">
+            </div>
+            <div class="item">
+                <div class="spec-title">增强语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo15_1.png" alt="语谱图"></div>
+                <audio controls src="audio/demo15_1.wav">
+            </div>
+        </div>
+        `;
+
+        // 22/22组场景（每组也加上标题，方便区分）
+        sceneHtml += `
+        <div class="row">
+            <div class="label">#地下车库-------------------------#</div>
+            <div class="item">
+                <div class="spec-title">带噪语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo16_0.png" alt="语谱图"></div>
+                <audio controls src="audio/demo16_0.wav">
+            </div>
+            <div class="item">
+                <div class="spec-title">增强语音</div>
+                <div class="spec-wrap"><img class="spec-img" src="img/demo16_1.png" alt="语谱图"></div>
+                <audio controls src="audio/demo16_1.wav">
+            </div>
+        </div>
+        `;
+        
+        
+
+        container.innerHTML = sceneHtml;
+    </script>
+</body>
+</html>
